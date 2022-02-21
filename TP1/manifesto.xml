@@ -1,0 +1,21 @@
+<manifesto>
+	<title>TPC1</title>
+	<data>21/02/2022</data>
+	<autor>Ana Sofia Marinho Gomes (PG47003)</autor>
+	<UC>Representação e Processamento de Conhecimento na Web</UC>
+	<resumo>
+		Website sobre José Saramago edificado com recurso a HTML e W3.CSS.
+	</resumo>
+	<ficheiros>
+		<pasta nome="images">
+			<ficheiro>levantado.png</ficheiro>
+			<ficheiro>evangelho.png</ficheiro>
+			<ficheiro>jose.png</ficheiro>
+			<ficheiro>intermitencias.png</ficheiro>
+			<ficheiro>ensaio.png</ficheiro>
+			<ficheiro>ano.png</ficheiro>
+			<ficheiro>memorial.png</ficheiro>
+		</pasta>
+		<ficheiro>saramago.html</ficheiro>
+	</ficheiros>
+</manifesto>
