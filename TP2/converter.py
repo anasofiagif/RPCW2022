@@ -12,7 +12,7 @@ films = json.load(f)
 films.sort(key= lambda x : x["title"].lower())
 
 # Create film index file
-index = open("filmsIndex.html", "w+")
+index = open("films.html", "w+")
 index.write("<h1>Films</h1>\n\n<ul>\n")
 
 # Iterate through every film
@@ -27,9 +27,11 @@ for film in films:
 
     # Create a new film file
     ff = open("films/" + newTitle + ".html", "w+")
+    #Return to main page
+    ff.write(f'\t<b><a href=\"../films.html\">Films</a></b>\n')
 
     # Register film on the index
-    index.write('<li> <a href = "localhost:1441/films/' + newTitle + '">' + title + '</a> </li>\n')
+    index.write('<li> <a href = "films/' + newTitle + '.html">' + title + '</a> </li>\n')
 
     # Write the film info in the file 
     ff.write("<h1>" + title + "</h1>\n\n")
@@ -44,7 +46,7 @@ for film in films:
             newName = newName.replace(char, "")
         afName = "actors/" + newName + ".html"
 
-        ff.write('<li> <a href = "localhost:1441/actors/' + newName + '">' + actor + '</a> </li>\n')
+        ff.write('<li> <a href = "../' + afName + '">' + actor + '</a> </li>\n')
 
         # Edit an existing actor file
         if os.path.exists(afName):
@@ -53,10 +55,12 @@ for film in films:
         # Create a new actor file
         else:
             af = open(afName, "w+")
+            #Return to main page
+            af.write(f'\t<b><a href=\"../films.html\">Films</a></b>\n')
             af.write("<h1>" + actor + "</h1>\n\n")
             
 
-        af.write('<li> <a href = "localhost:1441/films/' + newTitle + '">' + title + '</a> </li>\n')
+        af.write('<li> <a href = "../films/' + newTitle + '.html">' + title + '</a> </li>\n')
         af.close()
     
     ff.write("</ul>\n\n")
