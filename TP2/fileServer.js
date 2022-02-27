@@ -8,7 +8,7 @@ http.createServer(function (req, res) {
 
     console.log(myurl)
 
-    fs.readFile('./' + myurl, function(err, data){
+    fs.readFile('./out/' + myurl + '.html', function(err, data){
 
         res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
 
