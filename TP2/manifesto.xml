@@ -1,0 +1,31 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC2: File Server</titulo>
+        <data>2022-02-28</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de um file server que serve as páginas HTML criadas a partir da
+           informação presente num</p> 
+            <xref>
+                <url>https://epl.di.uminho.pt/~jcr/AULAS/ATP2021/datasets/cinemaATP.json</url>
+                <texto>dataset de filmes.</texto>
+            </xref></p> 
+        <p>As páginas HTML foram geradas através de um conversor em Python que se encarrega de ler o dataset e criar uma página para 
+           cada filme e para cada ator, bem como um índice de filmes e outro de atores.</p>
+    </resumo>
+    <resultados>
+        <resultado><url>converter.py</url>
+                <texto>Conversor</texto></resultado>
+        <resultado><url>fileServer.js</url>
+                <texto>File server</texto></resultado>
+    </resultados>
+</doc>
