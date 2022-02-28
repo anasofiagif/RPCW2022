@@ -27,6 +27,13 @@ def create_file(name, title):
                        '\t\t<b><a href="../films">Films</a></b>\n',
                        '\t\t<b><a href="../actors">Actors</a></b>\n'
                        '\t</head>\n',
+                       '\t<style>\n',
+                       '\t\ta:link, a:visited {\n',
+                       '\t\t\tcolor: #5BB0BA;\n',
+                       '\t\t\tbackground-color: transparent;\n',
+                       '\t\t}\n',
+                       '\t\th1, b{color: #C15B78;}',
+                       '\t</style>\n',
                        '\t<body>\n',
                        '\t\t<h1>' + title + '</h1>\n']
 
