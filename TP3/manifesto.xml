@@ -1,0 +1,29 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC3: Servidor Alimentado por uma API de Dados</titulo>
+        <data>2022-03-14</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de um file server que serve páginas HTML, geradas dinamicamente, a partir de
+           uma API de dados que contém informações acerca de uma</p> 
+            <xref>
+                <url>https://epl.di.uminho.pt/~jcr/TRANSF/db.json</url>
+                <texto>escola de música.</texto>
+            </xref></p> 
+        <p>A página principal contém três hiperligações que conduzem às listagens dos alunos, dos cursos e dos instrumentos. Cada uma destas é
+           apresentada numa tabela.</p>
+    </resumo>
+    <resultados>
+        <resultado><url>server.js</url>
+                <texto>File server</texto></resultado>
+    </resultados>
+</doc>
