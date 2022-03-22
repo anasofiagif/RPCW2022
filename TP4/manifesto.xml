@@ -1,0 +1,32 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC4: To-Do List</titulo>
+        <data>2022-03-21</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de uma Single Page Application (SPA) para to-do lists.</p>    
+        <p>A página principal é constituída por 3 secções principais: um formulário, a partir do qual podem ser inseridas novas
+           tarefas, uma lista de tarefas por fazer e uma lista de tarefas realizadas.</p>
+        <p>Cada tarefa é constituída pela data de criação, deadline e o nome da pessoa que terá de efetuar a tarefa, bem como a
+           descrição e o tipo da tarefa (pendente ou realizada).</p>
+        <p>A aplicação, para além de registar novas tarefas, deveria ser capaz de alterar uma tarefa de pendente para realizada,
+           contudo esta funcionalidade não é suportada.</p>
+    </resumo>
+    <resultados>
+        <resultado><url>server.js</url>
+                <texto>File server</texto></resultado>
+        <resultado><url>static.js</url>
+                <texto>Servidor de recursos estáticos</texto></resultado>
+        <resultado><url>db.js</url>
+                <texto>Base de dados</texto></resultado>
+    </resultados>
+</doc>

@@ -1,0 +1,52 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "created": "20/03/2022",
+      "deadline": "21/03/2022",
+      "who": "Chandler",
+      "what": "Make a sarcastic comment at work",
+      "type": "todo"
+    },
+    {
+      "id": 2,
+      "created": "18/03/2022",
+      "deadline": "20/03/2022",
+      "who": "Rachel",
+      "what": "Buy a dress at Bloomingdale's",
+      "type": "complete"
+    },
+    {
+      "id": 3,
+      "created": "01/03/2022",
+      "deadline": "02/03/2022",
+      "who": "Monica",
+      "what": "Clean the vacuum cleaner with another vacuum cleaner",
+      "type": "complete"
+    },
+    {
+      "id": 4,
+      "created": "20/03/2022",
+      "deadline": "25/03/2022",
+      "who": "Ross",
+      "what": "Pick up Ben",
+      "type": "todo"
+    },
+    {
+      "id": 5,
+      "created": "09/03/2022",
+      "deadline": "24/03/2022",
+      "who": "Phoebe",
+      "what": "Play Smelly Cat at Central Perk",
+      "type": "todo"
+    },
+    {
+      "id": 6,
+      "created": "01/03/2022",
+      "deadline": "01/03/2022",
+      "who": "Joey",
+      "what": "Buy the biggest sandwich in NYC",
+      "type": "complete"
+    }
+  ]
+}

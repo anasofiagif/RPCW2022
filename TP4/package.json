@@ -1,0 +1,16 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "To-do list",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "node server.js"
+  },
+  "author": "Ana Sofia",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "nodemon": "^2.0.15"
+  }
+}
