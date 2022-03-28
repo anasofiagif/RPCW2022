@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 
+    span= musica.tit
+  p 
+    b Id: 
+    span= musica.idM
+  p
+    b Província: 
+    td
+      a(href="/musicas/prov/"+musica.idP)= musica.prov
+  p
+    b Local: 
+    span= musica.local
+  p
+    b Músico: 
+    span= musica.musico
+  p
+    b Duração: 
+    span= musica.duracao
+  hr
+  adress 
+    a(href="/musicas") Voltar à lista

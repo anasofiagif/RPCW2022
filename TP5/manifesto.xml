@@ -1,0 +1,32 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC5: Web App de músicas</titulo>
+        <data>2022-03-28</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de uma web app, utilizando a framework Express, capaz de apresentar 
+           listagens e informações de músicas, tendo como base os dados recolhidos de uma API.</p>    
+        <p>Dado que o JSON fornecido não possuia um formato compatível com o json-server, criou-se um conversor em python que se 
+           encarrega de reestruturar o ficheiro. Para além disso, este adiciona um identificador a cada música e a cada província.
+        <p>A página inicial da app é composta por uma lista de músicas, em formato de tabela, que contém o identificador, o título 
+           e a província da música. Além desta, existe uma página dedicada a cada uma das músicas e outra dedicada a cada uma das
+           províncias.</p> 
+    </resumo>
+    <resultados>
+        <resultado><url>app</url>
+                <texto>Web app</texto></resultado>
+        <resultado><url>converter.py</url>
+                <texto>Conversor</texto></resultado>
+        <resultado><url>arqson.json</url>
+                <texto>Ficheiro com as informações das músicas</texto></resultado>
+    </resultados>
+</doc>

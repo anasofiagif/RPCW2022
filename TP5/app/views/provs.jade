@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 
+    span= musicas[0].prov
+  table 
+    tr
+      th Identificador
+      th Título
+    each m in musicas
+      tr 
+        td= m.idM
+        td
+         a(href="/musicas/"+m.idM)= m.tit
+
+  adress 
+    a(href="/musicas") Voltar à lista

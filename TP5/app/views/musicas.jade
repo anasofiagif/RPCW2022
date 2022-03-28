@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Lista de Músicas
+  table 
+    tr
+      th Identificador
+      th Título
+      th Província
+    each m in musicas
+      tr 
+        td= m.idM
+        td
+         a(href="/musicas/"+m.idM)= m.tit
+        td
+         a(href="/musicas/prov/"+m.idP)= m.prov
+
