@@ -1,0 +1,27 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC6: File Manager</titulo>
+        <data>2022-04-04</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de uma Single Page Application (SPA) capaz de gerir ficheiros, 
+        utilizando para tal a framework Express.</p>    
+        <p>A página é composta por duas componentes principais: um form através do qual podem ser submetidos ficheiros, 
+        acompanhados com uma descrição opcional, e uma tabela na qual são listados os ficheiros que já foram submetidos.</p>
+        <p>A aplicação permite a remoção dos ficheiros armazenados e impede a submissão de ficheiros com o mesmo nome.</p>
+
+    </resumo>
+    <resultados>
+        <resultado><url>fileManager</url>
+                <texto>File Manager</texto></resultado>
+    </resultados>
+</doc>
