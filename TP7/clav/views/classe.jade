@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1 
+    span= c.titulo
+  p 
+    b Código: 
+    span= c.codigo
+  p 
+    b Descrição: 
+    span= c.descricao
+  p
+    if(c.filhos.length)
+      b Descendentes:
+        ul
+          each d in c.filhos
+            li 
+              a(href="/classes/c"+d.codigo)= d.titulo    
+    if(c.nivel == '3'&& c.processosRelacionados.length)
+      b Processos relacionados: 
+        ul     
+          each p in c.processosRelacionados
+            if(p.idRel == "eCruzadoCom" || p.idRel == "eComplementarDe" || p.idRel == "eSuplementoDe" || p.idRel == "eSuplementoPara")
+              li 
+                a(href="/classes/c"+p.codigo)= p.titulo
+  hr
+  if(c.pai.codigo)
+    adress 
+      a(href="/classes/c" + c.pai.codigo) Página Anterior 
+  p
+  adress
+    a(href="/classes") Página Inicial
+    

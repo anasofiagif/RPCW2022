@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Navegar pela CLAV
+  
+  b O que é a CLAV?
+  p
+  p A CLAV (Classificação e Avaliação da Informação Pública) é uma plataforma da Direção-Geral do Livro, dos Arquivos e das Bibliotecas que disponibiliza informação, orientações e ferramentas que facilitem e normalizem as práticas de classificação e avaliação da informação pública.
+  p A plataforma destina-se a entidades da Administração Pública, a empresas públicas e a outras entidades de Portugal Continental e permite a interação entre estas e a DGLAB.
+  p É igualmente destinada ao cidadão, particularmente através da disponibilização do catálogo de processos de negócio da Administração Pública, que integra a Lista Consolidada.
+  p   
+  p A presente aplicação permite aos utilizadores navegar facilmente pela estrutura de classes disponibilizada pela API da CLAV. 
+
+  table 
+    tr
+      th Código 
+      th Título
+    each item in classList
+      tr 
+        td= item.codigo
+        td
+            a(href="/classes/c"+item.codigo)= item.titulo

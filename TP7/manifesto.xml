@@ -1,0 +1,25 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC7: Navegar pela CLAV</titulo>
+        <data>2022-04-11</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho de casa tinha como objetivo a construção de uma aplicação em nodejs que permite navegar pela estrutura de classes
+        disponibilizada pela API da CLAV.</p>    
+    </resumo>
+    <resultados>
+        <resultado><url>clav</url>
+                <texto>App</texto></resultado>
+        <resultado><url>warmup.md</url>
+                <texto>Exercício de Warmup</texto></resultado>
+    </resultados>
+</doc>
