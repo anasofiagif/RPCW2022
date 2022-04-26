@@ -1,0 +1,28 @@
+<?xml version="1.0" enconding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC8: As minhas frases</titulo>
+        <data>2022-04-25</data>
+        <autor>
+            <id>PG47003</id>
+            <nome>Ana Sofia Marinho Gomes</nome>
+        </autor>  
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Durante a última aula de RPCW, edificou-se uma aplicação web na qual o utilizador tem a oportunidade de inserir
+           frases através de um formulário e de visualizar uma lista composta pelas mesmas. Para tal, construiu-se uma página 
+           HTML com o recurso ao jQuery e uma API de dados em node.js. O armazenamento persistente dos dados é feito em MongoDB.</p>
+        <p>Este trabalho de casa tinha como principal objetivo aprimorar esta aplicação através da implementação das funcionalidades
+           de apagar e editar frases.</p>    
+    </resumo>
+    <resultados>
+        <resultado><url>myPara</url>
+                <texto>API de dados</texto></resultado>
+        <resultado><url>sentences</url>
+                <texto></texto>Página da aplicação</resultado>
+    </resultados>
+</doc>
