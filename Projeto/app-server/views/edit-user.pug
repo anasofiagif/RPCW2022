@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+    .w3-container
+        h3
+            b Edit user
+        form.w3-container(action='/user/edit/' + username method='POST' style='margin: 10px 250px;')
+            label Full name:
+            input.w3-input(type="text" name="fullname", style="width: 40%;" value=fullName)
+            p
+            label Bio:
+            p
+            textarea(type="textarea" name="editdesc" rows="4" style="width:280px;") #{bio}
+            p
+            input.w3-radio(type="radio" value="admin" name="level" checked=level=='admin')
+            label   Admin
+            p
+            input.w3-radio(type="radio" value="producer" name="level" checked=level=='producer')
+            label   Producer
+            p
+            input.w3-btn.w3-2020-mosaic-blue(type="submit" value="Submit")

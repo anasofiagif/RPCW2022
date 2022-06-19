@@ -1,0 +1,76 @@
+extends layout
+
+block content
+  if (level=='not logged' || level=='invalid')
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3
+          a(href='/signup') Sign Up
+          |  |     
+          a(href='/login') Login
+  else 
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3 
+          img(src=`http://localhost:4446/user/profile_picture/${username}` style='width:50px')
+          |
+          |
+          |#{username}
+          |  |        
+          a(href='/films') Films
+          if level == 'admin'
+            |  |        
+            a(href='/admin') Admin Area
+          |  |        
+          a(href='/logout') Logout
+
+    
+  .w3-row
+    .w3-container.w3-quarter
+      img(src=`http://localhost:4446/user/profile_picture/${username}` style='width:280px; margin: 30px 250px')
+    .w3-container.w3-threequarter.w3-left
+      h1(style='margin:80px 100px')
+        b= user.username
+      h4(style='margin:-70px 100px') 
+        strong Full name: 
+        | #{fullname}
+        p
+        strong Bio: 
+        | #{description}
+        p
+        strong Level: 
+        | #{level}
+        p
+        .w3-btn.w3-2020-mosaic-blue(style='width:150px')
+            a(class='button', href='/profile/edit') Edit profile
+
+        //TODO: change href 
+        .w3-btn.w3-2020-mosaic-blue(style='width:150px; margin-left: 20px;')
+            a(class='button', href='/download') Export data
+
+  if logs.length
+    h1
+      b Logs
+
+    for l in logs
+      .w3-container.w3-border.w3-round-large(style='margin: 10px 700px 10px 250px;')
+        p 
+          strong=l.movie
+          if l.like=='true'
+            |     ❤️
+          .w3-btn.w3-2020-mosaic-blue.w3-right
+            a(class='button', href='/log/edit/' + l._id) Edit
+          .w3-btn.w3-2020-flame-scarlet.w3-right(style='margin-right: 20px;')
+            a(class='button', href='/log/delete/' + l._id) Delete
+        p #{l.rating} ⭐️
+        p #{l.review}
+        p(style='text-align: right;margin-top: 30px;')
+          i= l.date
+        p
+        

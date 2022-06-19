@@ -1,0 +1,57 @@
+extends layout
+
+block content
+
+  if (level=='not logged' || level=='invalid')
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3
+          a(href='/signup') Sign Up
+          |  |     
+          a(href='/login') Login
+  else 
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3 
+          img(src=`http://localhost:4446/user/profile_picture/${username}` style='width:50px')
+          |
+          |
+          a(href='/profile') #{username}
+          |  |        
+          a(href='/films') Films
+          if level == 'admin'
+            |  |        
+            a(href='/admin') Admin Area
+          |  |        
+          a(href='/logout') Logout  
+
+  .w3-container
+    h1 News Panel
+    p
+    .w3-btn.w3-2020-mosaic-blue(style='margin: 10px 250px')
+      a(class='button', href='/news') 
+        p Insert news
+    p
+    table
+      tr
+        th Title
+        th Description
+        th Date
+        th Visible
+      each n in news
+        tr 
+          td= n.title
+          td= n.description
+          td= n.date
+          td= n.visible     
+          td 
+            .w3-btn.w3-2020-mosaic-blue.w3-right
+              a(class='button', href='/news/edit/' + n._id) Edit
+            .w3-btn.w3-2020-flame-scarlet.w3-right(style='margin-right: 20px;')
+              a(class='button', href='/news/delete/' + n._id) Delete

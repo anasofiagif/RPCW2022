@@ -1,0 +1,16 @@
+[
+	{
+		"username": "sofia",
+        "password": "1234",
+        "full name": "Ana Sofia",
+        "description": "Popcorn-sized reviews!",
+        "level": "consumer"
+	},
+    {
+		"username": "pedro",
+        "password": "4321",
+        "full name": "Pedro Pereira",
+        "description": "",
+        "level": "admin"
+	}
+]

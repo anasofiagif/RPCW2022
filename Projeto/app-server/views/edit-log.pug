@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+    .w3-container(style='width:1250px')
+        h3
+            b Edit log
+        form.w3-container(action='/log/edit/' + id style='margin: 10px 250px;' method='POST',id='submitForm')
+              label Rating:
+              .w3-row 
+                .w3-container.w3-quarter
+                  p
+                  input.w3-radio(type="radio" value="1" name="rating" checked=rating=="1")
+                  label   1 star
+                  p
+                  input.w3-radio(type="radio" value="2" name="rating" checked=rating=="2")
+                  label   2 stars
+                  p
+                  input.w3-radio(type="radio" value="3" name="rating" checked=rating=="3")
+                  label   3 stars
+                .w3-container.w3-quarter
+                  p
+                  input.w3-radio(type="radio" value="4" name="rating" checked=rating=="4")
+                  label   4 stars
+                  p
+                  input.w3-radio(type="radio" value="5" name="rating" checked=rating=="5")
+                  label   5 stars
+                  p
+                  if like=='true'
+                    input.w3-check(type="checkbox" value="true" name="like" checked)
+                  else 
+                    input.w3-check(type="checkbox" value="true" name="like")
+                  label   Like
+              p
+              label Review:
+              p
+              textarea(type="textarea" name="review" rows="4" style="width:280px;") #{review}
+              p
+              input.w3-btn.w3-2020-mosaic-blue(type="submit" value="Submit")

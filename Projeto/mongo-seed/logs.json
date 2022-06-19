@@ -1,0 +1,20 @@
+[
+	{
+		"user": "sofia",
+        "idMovie": "393",
+        "movie": "102 Dalmatians",
+        "rating": "4",
+        "review": "Such a lovely movie!",
+        "like": "true",
+        "date": "2022-01-01 | 12:00:39"
+	},
+    {
+		"user": "sofia",
+        "idMovie": "1993",
+        "movie": "Final Destination",
+        "rating": "3",
+        "review": "It could have been better",
+        "like": "false",
+        "date": "2022-02-01 | 12:00:39"
+	}
+]

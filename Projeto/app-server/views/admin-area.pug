@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  if (level=='not logged' || level=='invalid')
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3
+          a(href='/signup') Sign Up
+          |  |     
+          a(href='/login') Login
+  else 
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3 
+          img(src=`http://localhost:4446/user/profile_picture/${username}` style='width:50px')
+          |
+          |
+          a(href='/profile') #{username}
+          |  |        
+          a(href='/films') Films
+          |  |        
+          a(href='/logout') Logout    
+
+  .w3-container.w3-center
+    p
+    h1 Welcome to the Admin Area!
+    p
+    .w3-container(style='margin: 30px 500px')
+      .w3-row
+        .w3-third
+          .w3-btn.w3-2020-mosaic-blue(style='width:200px')
+            a(class='button', href='/admin/users') 
+              h5 Users
+        .w3-third
+          .w3-btn.w3-2020-mosaic-blue(style='width:200px')
+            a(class='button', href='/admin/log') 
+              h5 Logs
+        .w3-third
+          .w3-btn.w3-2020-mosaic-blue(style='width:200px')
+            a(class='button', href='/admin/news') 
+              h5 News      
+    

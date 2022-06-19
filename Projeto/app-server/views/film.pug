@@ -1,0 +1,129 @@
+extends layout
+
+block content
+ 
+
+    
+  if (level=='not logged' || level=='invalid')
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3
+          a(href='/signup') Sign Up
+          |  |     
+          a(href='/login') Login
+  else 
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+      .w3-right
+        h3 
+          img(src=`http://localhost:4446/user/profile_picture/${username}` style='width:50px')
+          |
+          |
+          a(href='/profile') #{username}
+          |  |             
+          a(href='/films') Films
+          |  |     
+          a(href='/logout') Logout
+  .w3-container
+    h1
+      b= film.title
+
+    .w3-panel.w3-border.w3-border.w3-round-large(style= "width:50%; margin: 10px 250px;")
+      .w3-left
+        p= film.overview
+
+    .w3-container(style= "margin: 10px 250px;")
+      .w3-row 
+        .w3-container.w3-quarter
+          p 
+            strong Director: 
+            | #{film.director}
+          p 
+            strong Year: 
+            | #{film.year}
+          b Genres:
+          ul 
+            each g in film.genres
+              li=g
+          p 
+            strong Runtime: 
+            | #{film.runtime}
+          b Countries:
+          ul
+            each c in film.countries
+              li=c 
+          b Language:
+          ul
+            each l in film.language
+              li=l
+          .w3-container.w3-2020-mosaic-blue(style='width:70%;')
+            p
+              b Average rating: 
+              | #{average} ⭐️
+        .w3-container.w3-quarter(style='margin: 13px 0px;')
+          b Cast:
+          ul 
+            each ca in film.cast
+              li=ca
+          b Studios:
+          ul
+            each s in film.studios
+              li=s
+
+        if (!(level=='not logged' || level=='invalid'))
+          .w3-container.w3-quarter
+          .w3-container.w3-quarter.w3-2020-mosaic-blue
+            h2(style= "text-align:center;")
+              b Log it!
+            form.w3-container(action='/log' method='POST',id='submitForm')
+              label Rating:
+              .w3-row 
+                .w3-container.w3-half
+                  p
+                  input.w3-radio(type="radio" value="1" name="rating" checked)
+                  label   1 star
+                  p
+                  input.w3-radio(type="radio" value="2" name="rating")
+                  label   2 stars
+                  p
+                  input.w3-radio(type="radio" value="3" name="rating")
+                  label   3 stars
+                .w3-container.w3-half
+                  p
+                  input.w3-radio(type="radio" value="4" name="rating")
+                  label   4 stars
+                  p
+                  input.w3-radio(type="radio" value="5" name="rating")
+                  label   5 stars
+                  p
+                  input.w3-check(type="checkbox" value="true" name="like")
+                  label   Like
+              p
+              label Review:
+              p
+              textarea(type="textarea" name="review" rows="4" style="width:280px;")
+              p
+              input.w3-btn.w3-white(type="submit" value="Submit")
+              p
+              input(type="hidden" name="user" value=username)
+              input(type="hidden" name="idMovie" value=film._id)
+              input(type="hidden" name="movie" value=film.title)
+  
+   
+  if logs.length
+    h1
+      b Logs
+    for l in logs
+      .w3-container.w3-border.w3-round-large(style='margin: 10px 700px 10px 250px;')
+        p Log by 
+          strong #{l.user}:
+          if (l.user == username)
+        p #{l.rating} ⭐️
+        p #{l.review}
+        p(style='text-align: right;')
+          i=l.date

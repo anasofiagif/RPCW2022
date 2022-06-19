@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+    .w3-container
+        h3
+            b Edit your profile
+        p
+        h4 
+            b Personal information
+        p
+        form.w3-container(action='/profile/edit' method='POST' style='margin: 10px 250px;' enctype="multipart/form-data")
+            label Full name:
+            input.w3-input(type="text" name="fullname", style="width: 40%;" value=fullName)
+            p
+            label Bio:
+            p
+            textarea(type="textarea" name="editdesc" rows="4" style="width:280px;") #{bio}
+            p
+            input(type='file' name='imageupload' id="File")
+            p
+            input.w3-btn.w3-2020-mosaic-blue(type="submit" value="Submit profile changes")
+            p
+        p
+        h4 
+            b Import data
+        p
+        form.w3-container(action='/import' method='POST' style='margin: 10px 250px;' enctype="multipart/form-data")
+            input(type='file' name='csvupload' id="File")
+            input.w3-btn.w3-2020-mosaic-blue(type="submit" value="Submit CSV")
+        if message
+            p(style="color:red; margin: 10px 250px;")= message
+            p
+        

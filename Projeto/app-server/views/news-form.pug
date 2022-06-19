@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .w3-container.w3-2020-mosaic-blue
+      .w3-left
+        h1 
+          a(href='/' style="text-decoration:none") Film Log
+    .w3-container
+        h3
+          b Insert news
+        form.w3-container(action='/news' method='POST' style='margin: 10px 250px;')
+          label Title:
+          input.w3-input(type="text" name="title", style="width: 40%;")
+          p
+          label Description:
+          p
+          textarea(type="textarea" name="description" rows="10" style="width:50%;")
+          p
+          label Visible
+          p
+          input.w3-radio(type="radio" value="yes" name="visible" checked)
+          label   Yes
+          p
+          input.w3-radio(type="radio" value="no" name="visible")
+          label   No
+          p
+          if message
+            p(style="color:red")= message
+            p
+          input.w3-btn.w3-2020-mosaic-blue(type="submit" value="Submit")

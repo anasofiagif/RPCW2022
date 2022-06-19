@@ -1,0 +1,6 @@
+/public/images/*
+!/public/images/user.jpeg
+/node_modules
+/static*
+
+
