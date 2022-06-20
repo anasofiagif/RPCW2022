@@ -8,7 +8,7 @@ var userRouter = require('./routes/user');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://mongo:27017/FilmLog', 
+mongoose.connect('mongodb://127.0.0.1:27017/FilmLog', 
       { useNewUrlParser: true,
         useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000});

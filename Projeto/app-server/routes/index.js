@@ -12,7 +12,7 @@ const BagIt = require('bagit-fs')
 const { zip } = require('zip-a-folder');
 
 router.get('/', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/news/?token=' + req.cookies.token)
        .then(info => {
           u = info.data.username
           l = info.data.level
@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/films', function(req, res) {
-  axios.get('http://api:4445/api/movies?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/movies?token=' + req.cookies.token)
       .then(d => {
         var list = d.data.dados
         var l = d.data.level
@@ -35,8 +35,8 @@ router.get('/films', function(req, res) {
 
 router.get('/film/:id', function(req, res){
 
-  const requestOne = axios.get('http://api:4445/api/movies/' + req.params.id + '?token=' + req.cookies.token);
-  const requestTwo = axios.get('http://api:4445/api/logs/movie/' + req.params.id + '?token=' + req.cookies.token);
+  const requestOne = axios.get('http://localhost:4445/api/movies/' + req.params.id + '?token=' + req.cookies.token);
+  const requestTwo = axios.get('http://localhost:4445/api/logs/movie/' + req.params.id + '?token=' + req.cookies.token);
 
   axios.all([requestOne, requestTwo])
        .then(axios.spread((...responses) => {
@@ -66,7 +66,7 @@ router.get('/film/:id', function(req, res){
 })
 
 router.get('/admin', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
       .then(u => {
         
         if(u.data.level == 'admin'){
@@ -80,7 +80,7 @@ router.get('/admin', function(req, res) {
 });
 
 router.get('/admin/users', function(req, res) {
-  axios.get('http://api:4445/api/users?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/users?token=' + req.cookies.token)
       .then(d => {
 
         if(d.data.level == 'admin'){
@@ -234,7 +234,7 @@ router.post('/search', function(req, res) {
 //......................................................................
 
 router.get('/signup', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
       .then(u => {
         res.render('signup-form', {level: u.data.level})
       })
@@ -245,11 +245,11 @@ router.get('/signup', function(req, res) {
 
 
 router.post('/signup', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
           userLvl = u.data.level
           username = u.data.username
-          axios.post('http://auth:4444/users/signup', req.body)
+          axios.post('http://localhost:4444/users/signup', req.body)
             .then(dados => {
               if(userLvl=='admin'){
                 res.render("success", {message: "User successfully saved!", ref: "/admin/users", username: username})
@@ -278,7 +278,7 @@ router.get('/login', function(req, res) {
 router.post('/login', function(req, res) {
   console.log("login: body")
   console.log(req.body)
-  axios.post('http://auth:4444/users/login?token=' + req.cookies.token, req.body)   
+  axios.post('http://localhost:4444/users/login?token=' + req.cookies.token, req.body)   
     .then(dados => {
       res.cookie('token', dados.data.token, {
         expires: new Date(Date.now() + '1d'),
@@ -306,13 +306,13 @@ router.post('/log', function(req, res){
 
   req.body["date"] = list[0] + " | " + list[1]
   console.log(req.body)
-  axios.post('http://api:4445/api/logs?token=' + req.cookies.token,req.body)   
+  axios.post('http://localhost:4445/api/logs?token=' + req.cookies.token,req.body)   
     .then(dados => {res.render('success', {username: req.body.user, message: "Log successfully saved!", ref: '/films'})})
     .catch(e => {res.render('error', {error: e})})
 })
 
 router.get('/log/edit/:id', function(req, res){
-  axios.get('http://api:4445/api/logs/' + req.params.id + '?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/logs/' + req.params.id + '?token=' + req.cookies.token)
        .then(log => {
           ra = log.data.dados.rating
           re = log.data.dados.review
@@ -323,7 +323,7 @@ router.get('/log/edit/:id', function(req, res){
 })
 
 router.post('/log/edit/:id', function(req, res){
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
 
           id=req.params.id
@@ -339,7 +339,7 @@ router.post('/log/edit/:id', function(req, res){
           req.body["_id"] = id
           
           console.log(req.body)
-          axios.post('http://api:4445/api/logs/edit?token=' + req.cookies.token,req.body)   
+          axios.post('http://localhost:4445/api/logs/edit?token=' + req.cookies.token,req.body)   
             .then(dados => {res.render("success", {message: "Log successfully saved!", ref: "/profile", username: u.data.username})})
             .catch(e => {res.render('error', {error: e})})
 
@@ -349,10 +349,10 @@ router.post('/log/edit/:id', function(req, res){
 
 router.get('/log/delete/:id', function(req, res){
 
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
 
-        axios.delete('http://api:4445/api/logs/'+ req.params.id +'?token=' + req.cookies.token)
+        axios.delete('http://localhost:4445/api/logs/'+ req.params.id +'?token=' + req.cookies.token)
         .then(dados => res.render("success", {message: "Log successfully deleted!", ref: "/profile", username: u.data.username}))
         .catch(e => res.render('error', {error:e,access:req.cookies.access}))
 
@@ -362,11 +362,11 @@ router.get('/log/delete/:id', function(req, res){
 })
 
 router.get('/profile', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
           user = u.data.username
-          const requestOne = axios.get('http://api:4445/api/user/' + user + '?token=' + req.cookies.token);
-          const requestTwo = axios.get('http://api:4445/api/logs/user/' + user + '?token=' + req.cookies.token);
+          const requestOne = axios.get('http://localhost:4445/api/user/' + user + '?token=' + req.cookies.token);
+          const requestTwo = axios.get('http://localhost:4445/api/logs/user/' + user + '?token=' + req.cookies.token);
           axios.all([requestOne, requestTwo])
                .then(axios.spread((...responses) => {
                   const responseOne = responses[0]
@@ -393,9 +393,9 @@ router.get('/profile', function(req, res) {
 });
 
 router.get('/profile/edit', function(req, res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
-          axios.get('http://api:4445/api/user/' + u.data.username + '?token=' + req.cookies.token)
+          axios.get('http://localhost:4445/api/user/' + u.data.username + '?token=' + req.cookies.token)
               .then(user => {
                 f = user.data.dados.fullname
                 b = user.data.dados.description
@@ -425,7 +425,7 @@ router.get('/user/delete/:id', function(req, res) {
 
 router.get('/user/edit/:id', function(req, res) {
 
-  axios.get('http://api:4445/api/user/' + req.params.id + '?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/' + req.params.id + '?token=' + req.cookies.token)
         .then(user => {
             aux = user.data.dados
             f = aux.fullname
@@ -444,7 +444,7 @@ router.post('/user/edit/:id', function(req, res) {
   des = req.body.editdesc
   level = req.body.level
 
-  axios.get('http://api:4445/api/user/' + req.params.id + '?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/' + req.params.id + '?token=' + req.cookies.token)
      .then(u => {
 
         user = u.data.dados
@@ -459,7 +459,7 @@ router.post('/user/edit/:id', function(req, res) {
 
         console.log(user)
 
-        axios.post('http://api:4445/api/user/edit/' + user.username + '?token=' + req.cookies.token, user)
+        axios.post('http://localhost:4445/api/user/edit/' + user.username + '?token=' + req.cookies.token, user)
             .then(u => {res.redirect('/admin/users')})
             .catch(e => {res.render('error', {error: e})})
   
@@ -488,7 +488,7 @@ router.post('/profile/edit', upload.single('imageupload'), function(req, res) {
     des = req.body.editdesc
     parentDir = path.normalize(__dirname+"/.."); 
 
-    axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+    axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
        .then(u => {
 
           let user = u.data 
@@ -505,7 +505,7 @@ router.post('/profile/edit', upload.single('imageupload'), function(req, res) {
           if (des){user.description = des}
           else{user.description = null}
 
-          axios.post('http://api:4445/api/user/edit/' + user.username + '?token=' + req.cookies.token, user)
+          axios.post('http://localhost:4445/api/user/edit/' + user.username + '?token=' + req.cookies.token, user)
               .then(u => {res.redirect('/profile')})
               .catch(e => {res.render('error', {error: e})})
     
@@ -538,11 +538,11 @@ router.get('/logout', function(req, res) {
 
 router.get('/download', function(req, res) {
   console.log(req.body)
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
     .then(u => {
       //esta logged in 
       let user = u.data.username
-      axios.get('http://api:4445/api/logs/user/' + user + '?token=' + req.cookies.token)
+      axios.get('http://localhost:4445/api/logs/user/' + user + '?token=' + req.cookies.token)
       .then( data => {
           logs = data.data.dados
           let csv = ''
@@ -557,7 +557,7 @@ router.get('/download', function(req, res) {
             csv += (log.like ? true : false )+ separator
             csv += log.date + "\n"
           });
-          axios.get('http://api:4445/api/incDl/' + user + '?token=' + req.cookies.token).then( u=> {
+          axios.get('http://localhost:4445/api/incDl/' + user + '?token=' + req.cookies.token).then( u=> {
             res.set({"Content-Disposition":`attachment; filename=\"${logs.user}.csv\"`});
             res.send(csv);
           })
@@ -577,7 +577,7 @@ const uploadcsv = multer({ dest: 'tmp/csv/' });
 //router.get('/import', upload.single('file'), function(req, res) {
 router.post('/import', uploadcsv.single('csvupload') ,function(req, res) {
   console.log(req.body)
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
     .then(u => {
       d = new Date()
       d = d.toISOString().split('.')[0]
@@ -596,7 +596,7 @@ router.post('/import', uploadcsv.single('csvupload') ,function(req, res) {
         .on('error', error => console.error(error))
         .on('data', row => {
           body = {user: user, idMovie: row[1], movie: row[2],rating: row[3],review: row[4],like: row[5],date: date }
-          requests.push(axios.post('http://api:4445/api/logs?token=' + req.cookies.token, body)) 
+          requests.push(axios.post('http://localhost:4445/api/logs?token=' + req.cookies.token, body)) 
           console.log(row)
         })
         .on('end', rowCount => {
@@ -625,14 +625,14 @@ var bagoutputDir = path.join(__dirname, "../tmp/bag")
 var bag = BagIt(bagoutputDir, {'Contact-Name': 'PP&sof?'})
 
 router.get('/createbag', function ( req,res) {
-  axios.get('http://api:4445/api/user/?token=' + req.cookies.token)
+  axios.get('http://localhost:4445/api/user/?token=' + req.cookies.token)
       .then(u => {
         
         if(u.data.level == 'admin'){
         //ver todos os users, e copiar os dados + foto
         console.log('starting Bag')
           bag.mkdir('/users', function () {
-            axios.get('http://api:4445/api/users' + '?token=' + req.cookies.token).then(users =>{
+            axios.get('http://localhost:4445/api/users' + '?token=' + req.cookies.token).then(users =>{
               if (!fs.existsSync(path.join(__dirname, "../tmp/users/"))){
                 fs.mkdirSync(path.join(__dirname, "../tmp/users/"));
               }
@@ -661,10 +661,10 @@ router.get('/createbag', function ( req,res) {
             //ver todos os filmes e copiar as reviews
             bag.mkdir('/logs', function () {
               console.log("comecei os logs")
-              axios.get('http://api:4445/api/movies' + '?token=' + req.cookies.token).then(m =>{
+              axios.get('http://localhost:4445/api/movies' + '?token=' + req.cookies.token).then(m =>{
                 //console.log(u)
                 movies = m.data.dados
-                    axios.get('http://api:4445/api/logs' + '?token=' + req.cookies.token).then(u =>{
+                    axios.get('http://localhost:4445/api/logs' + '?token=' + req.cookies.token).then(u =>{
                       logs = u.data.dados
                       if (!fs.existsSync(path.join(__dirname, "../tmp/logs/"))){
                         fs.mkdirSync(path.join(__dirname, "../tmp/logs/"));
